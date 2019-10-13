@@ -1,0 +1,115 @@
+htmp, body {
+    margin: 0;
+    padding: 0;
+}
+
+.row    {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.menu   {
+    float: right;
+}
+
+.menuIcon   {
+    margin-top: 5px;
+    font-size: 160%;
+    color: rgb(20, 194, 156);
+}
+
+.headBar    {
+    background: #0e0a4f;
+    padding: 10px;
+}
+
+.items  {
+    margin: 0 5px;
+    padding: 0 5px;
+}
+
+.btn-danger {
+    background: rgb(20, 194, 156);
+    border: none;
+}
+
+.about  {
+    background: rgb(20, 194, 156);
+    padding: 7px;
+    vertical-align: middle;
+    border-radius: 3px;
+    color: white;
+    transition: 200ms;
+}
+
+.about > a  {
+    color: white;
+    text-decoration: none;
+}
+
+.about:hover    {
+    background: #dc3545;
+}
+
+.mainBody   {
+    /* background-image: linear-gradient(to bottom, white, rgb(124, 168, 219), white); */
+    height: 80vh;
+    background: url("./static/hospital.jpg");
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
+    position: relative;
+}
+
+.headLine   {
+    position: absolute;
+    text-align: center;
+    font-size: 200%;
+    left: 35%;
+    top: 80%;
+    font-weight: 800;
+    color: #7772d8;
+}
+
+.hospIcon   {
+    text-align: center;
+}
+
+.hospIcon > i   {
+    font-size: 3000%;
+    margin-top: 40px;
+    color: #dc3545;
+}
+
+.footerContainer    {
+    background: #0e0a4f;
+    padding: 20px 0;
+}
+
+.footerItems    {
+    text-align: center;
+    color: white;
+}
+
+.footerItems > span:hover  {
+    color: #dc3545;
+    cursor: pointer;
+}
+
+.info {
+    padding: 5px;
+    background: #070433;
+    color: white;
+}
+
+.info > .col {
+    text-align: center;
+}
+
+.dropdown-menu  {
+    background: #251f75;
+}
+
+.dropdown-menu > a {
+    color: white;
+}
