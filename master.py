@@ -82,7 +82,7 @@ def register():
         "cont": cont,
         "add": add,
         "diag": diag,
-        "pass": password
+        "password": password
     }
 
     # print(data)
@@ -95,16 +95,20 @@ def register():
 def login():
     email = request.json["email"]
     password = request.json["pass"]
-
-    collection = db["doctorsData"]
+    print(email, password)
+    collection = db["registerData"]
     result = collection.find({ "email": email })
     data = []
     for i in result:
         data = {
-            "pass": i["pass"]
+            "email": i["email"],
+            "password": i["password"]
         }
     print(data)
-    return jsonify({"pass": data})
+    if password == data["password"]:
+        return jsonify({"valid": "true"})
+    else:
+        return jsonify({"valid": "false"})
 
 
 if __name__ == '__main__':
