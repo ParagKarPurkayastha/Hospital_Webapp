@@ -8,16 +8,7 @@ $(".submited").click(function(){
     var cont = $("#cont").val();
     var add = $("#add").val();
     var diag = $("#diag").val();
-
-    // var data = {
-    //     "name": name,
-    //     "email": email,
-    //     "cont": cont,
-    //     "add": add,
-    //     "diag": diag
-    // }
-
-    // console.log(data);
+    var pass = $("#pass").val();
 
     var dataSend = {
         "async": true,
@@ -29,10 +20,11 @@ $(".submited").click(function(){
             "cache-control": "no-cache"
         },
         "processData": false,
-        "data": "{\n\t\"name\": \"" + name + "\", \n\t\"email\": \"" + email + "\", \n\t\"cont\": \"" + cont + "\", \n\t\"add\": \"" + add + "\", \n\t\"diag\": \"" + diag + "\"}"
+        "data": "{\n\t\"name\": \"" + name + "\", \n\t\"email\": \"" + email + "\", \n\t\"cont\": \"" + cont + "\", \n\t\"add\": \"" + add + "\", \n\t\"diag\": \"" + diag + "\", \n\t\"pass\": \"" + pass + "\"}"
     }
     $.ajax(dataSend).done(function (response) {
         console.log("done")
         alert("You have been registered!!!");
+        window.location.replace("./index.html");
     });
 });

@@ -1,18 +1,25 @@
 <html>
-    <head>
-        <title>Form Demo</title>
-    </head>
-    <body>
-        <h1>LOGIN</h1>
 
-        <form>
-            <label for="username">Email</label>
-            <input id="username" type="email" placeholder="Email" required>
+<head>
+    <title>Form Demo</title>
+</head>
 
-            <label for="password">Password:</label>
-            <input id="password" type="password" placeholder="Password" required>
+<body>
+    <h1>LOGIN</h1>
 
-            <input type="submit">
-        </form>
-    </body>
+    <form>
+        <label for="username">Email</label>
+        <input id="email" type="email" placeholder="Email" required>
+
+        <label for="password">Password:</label>
+        <input id="pass" type="password" placeholder="Password" required>
+
+        <input type="button" value="Submit" class="submited">
+    </form>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="./login.js"></script>
+</body>
+
 </html>

@@ -74,19 +74,37 @@ def register():
     cont = request.json["cont"]
     add = request.json["add"]
     diag = request.json["diag"]
+    password = request.json["pass"]
 
     data = {
         "name": name,
         "email": email,
         "cont": cont,
         "add": add,
-        "diag": diag
+        "diag": diag,
+        "pass": password
     }
 
     # print(data)
     collection.insert_one(data)
     # print(name)
     return "ok"
+
+
+@application.route('/login', methods=['POST'])
+def login():
+    email = request.json["email"]
+    password = request.json["pass"]
+
+    collection = db["doctorsData"]
+    result = collection.find({ "email": email })
+    data = []
+    for i in result:
+        data = {
+            "pass": i["pass"]
+        }
+    print(data)
+    return jsonify({"pass": data})
 
 
 if __name__ == '__main__':
