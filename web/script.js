@@ -16,7 +16,7 @@ var doctorsNames = {
 }
 
 $.ajax(doctorsNames).done(function (response) {
-    console.log(response);
+    // console.log(response);
     $('.doctorNames').html("");
 
     for (i = 0; i < response["doctor_names"].length; i++) {
@@ -30,7 +30,7 @@ $.ajax(doctorsNames).done(function (response) {
 
 $(".doctorNames").click(function (e){
     var txt = $(e.target).text();
-    console.log(txt);
+    // console.log(txt);
 
     var setName = {
         "async": true,

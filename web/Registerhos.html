@@ -1,18 +1,24 @@
 <html>
-    <head>
-        <title>Regitration Form</title>
-        <link rel="stylesheet" type="text/css" href="design.css" >
-    </head>
-    <body>
-        <h1>REGISTER</h1>
-        <form class="fm">
-            <br>Name: <input type="text"/></br>
-            <br>Email ID: <input type="text"/></br>
-            <br>Contact no.: <input type="text"/></br>
-            <br>Address: <input type="text"/></br>
-            <br>Diagnosis: <input type="text"/></br>
-            <br><input type="button" value="Submit"></br>
 
-        </form>
-    </body>
+<head>
+    <title>Regitration Form</title>
+    <link rel="stylesheets" type="text/css" href="design.css">
+</head>
+
+<body>
+    <h1 style="text-align: center;">REGISTER</h1>
+    <form class="fm" style="text-align: center;">
+        <br>Name: <input type="text" id="name"/></br>
+        <br>Email ID: <input type="text" id="email"/></br>
+        <br>Contact no.: <input type="text" id="cont"/></br>
+        <br>Address: <input type="text" id="add"/></br>
+        <br>Diagnosis: <input type="text" id="diag"/></br>
+        <br><input type="button" value="Submit" class="submited"></br>
+
+    </form>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="./register.js"></script>
+</body>
+
 </html>

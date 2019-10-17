@@ -18,6 +18,15 @@ htmp, body {
     color: rgb(20, 194, 156);
 }
 
+.menuItem   {
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: rgb(20, 194, 156);
+    text-decoration: none;
+    
+}
+
 .headBar    {
     background: #0e0a4f;
     padding: 10px;

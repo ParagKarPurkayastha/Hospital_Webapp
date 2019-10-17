@@ -44,16 +44,49 @@ def doctorsData():
     result = collection.find({})
     for i in result:
         name = i["name"]
-    # name = "boom Bom"
+
     name = name[1:]
     print(name)
     collection = db["doctorsData"]
     result = collection.find({ "name": name })
     data = []
     for i in result:
-        data = { "data": i["data"] }
+        data = {
+            "name": i["name"],
+            "specialization": i["specialization"],
+            "designation": i["designation"],
+            "qualifications1": i["qualifications1"],
+            "qualifications2": i["qualifications2"],
+            "medical_experience1": i["medical_experience1"],
+            "medical_experience2": i["medical_experience2"],
+            "administrative_experience1": i["administrative_experience1"],
+            "administrative_experience2": i["administrative_experience2"]
+        }
     print(data)
-    return jsonify({"doctor_names": "ok"})
+    return jsonify({"doctorData": data})
+
+
+@application.route('/register', methods=['POST'])
+def register():
+    collection = db["registerData"]
+    name = request.json["name"]
+    email = request.json["email"]
+    cont = request.json["cont"]
+    add = request.json["add"]
+    diag = request.json["diag"]
+
+    data = {
+        "name": name,
+        "email": email,
+        "cont": cont,
+        "add": add,
+        "diag": diag
+    }
+
+    # print(data)
+    collection.insert_one(data)
+    # print(name)
+    return "ok"
 
 
 if __name__ == '__main__':
