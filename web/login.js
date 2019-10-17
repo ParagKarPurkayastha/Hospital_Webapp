@@ -21,5 +21,10 @@ $(".submited").click(function(){
     }
     $.ajax(dataSend).done(function (response) {
         console.log(response);
+
+        if(response["valid"] == "true")
+            window.location.replace("./webbbb.html");
+        else
+            alert("Incorect Eamil or Password!!!")
     });
 });
