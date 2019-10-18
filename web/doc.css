@@ -1,0 +1,10 @@
+.do{
+    text-align: center;
+    text-decoration: underline;
+}
+
+.de{
+    background-image: url("med.jpeg");
+    background-color: rgba(127, 193, 255, 0.5);
+    text-align: center;
+}
