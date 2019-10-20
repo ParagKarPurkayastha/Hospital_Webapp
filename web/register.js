@@ -7,9 +7,9 @@ $(".submited").click(function(){
     var email = $("#email").val();
     var cont = $("#cont").val();
     var add = $("#add").val();
-    var diag = $("#diag").val();
+    var diag = $("#diag").children("option:selected").val();
     var pass = $("#pass").val();
-
+    console.log(diag);
     var dataSend = {
         "async": true,
         "crossDomain": true,

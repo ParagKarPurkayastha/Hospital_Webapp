@@ -98,14 +98,29 @@ def login():
     print(email, password)
     collection = db["registerData"]
     result = collection.find({ "email": email })
-    data = []
+    relPass = ""
     for i in result:
-        data = {
-            "email": i["email"],
-            "password": i["password"]
-        }
-    print(data)
-    if password == data["password"]:
+            relPass = i["password"]
+    # print(data)
+    if password == relPass:
+        return jsonify({"valid": "true"})
+    else:
+        return jsonify({"valid": "false"})
+
+
+@application.route('/DocLogin', methods=['POST'])
+def docLogin():
+    email = request.json["email"]
+    password = request.json["pass"]
+    print(email, password)
+    collection = db["doctorsData"]
+    result = collection.find({ "email": email })
+    relPass = ""
+    for i in result:
+        relPass = i["password"];
+
+    # print(data)
+    if password == relPass:
         return jsonify({"valid": "true"})
     else:
         return jsonify({"valid": "false"})

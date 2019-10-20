@@ -8,17 +8,37 @@
 <body>
     <h1 style="text-align: center;">REGISTER</h1>
     <style>
-            fm{ height:45%; }
-            footer{text-align: center; font-size: 170%;}
-            body{background-color: lightgreen}
-        </style>
+        fm {
+            height: 45%;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 170%;
+        }
+
+        body {
+            background-color: lightgreen
+        }
+    </style>
     </style>
     <form class="fm" style="text-align: center;">
-        <br>Name: <input type="text" id="name"/></br>
-        <br>Email ID: <input type="text" id="email"/></br>
-        <br>Contact no.: <input type="text" id="cont"/></br>
-        <br>Address: <input type="text" id="add"/></br>
-        <br>Diagnosis: <input type="text" id="diag"/></br>
+        <br>Name: <input type="text" id="name" /></br>
+        <br>Email ID: <input type="text" id="email" /></br>
+        <br>Contact no.: <input type="text" id="cont" /></br>
+        <br>Address: <input type="text" id="add" /></br>
+        <!-- <br>Diagnosis: <input type="text" id="diag"/></br> -->
+        <br>
+        Diagnosis :
+        <select class="custom-select" id="diag" >
+            <option selected value="none">Select One Option</option>
+            <option value="Nural">Nural</option>
+            <option value="Nephro">Nephro</option>
+            <option value="Cardio">Cardio</option>
+            <option value="ENT">ENT</option>
+            <option value="Gyno">Gyno</option>
+        </select>
+        </br>
         <br>Password: <input type="password" id="pass"></br>
         <br><input type="button" value="Submit" class="submited"></br>
 

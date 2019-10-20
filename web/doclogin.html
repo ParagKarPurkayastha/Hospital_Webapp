@@ -1,46 +1,67 @@
 <!DOCTYPE HTML>
 <html>
- <head>
- <title>Doctor Login</title>
- </head>
- <style>
- body{background-color: lightseagreen;}
- .a:hover{color:blue}
- .b:hover{color:blue}
- header{background-color:rgb(137, 240, 128);
-			text-align: center;
-			padding: 10px;
-			font-size: 25px;
-			color: black;}
- </style>
- <body>
- <header>
- <strong><h1>LOGIN</h1><strong>
-     <hr>
- </header>
- <br><br>
- <center>
- <center style="border:5px solid green;width:30%; background-color:lightgoldenrodyellow; padding:40px; font-size: 17px">
- 
- <table border="0">
- <tr>
- <td><style="color:black;"/> EMAIL: </td>
- <td><input type="text" name="uname" placeholder="Email" class="a"></td>
- </tr>
- <tr>
- <td><style="color:black;"/>PASSWORD:</td>
- <td><input type="password" name="pwd" placeholder="Password" class="b"></td>
- </tr>
- </table>
- </center>
- <br><br>
- <center>
- <input type="submit" value="LOGIN" class="a">
- <br><br><br><br><br>
- &copy;Verified by the Hospital Association
- </center>
- </strong>
 
- </center>
- </body>
+<head>
+	<title>Doctor Login</title>
+</head>
+<style>
+	body {
+		background-color: lightseagreen;
+	}
+
+	.a:hover {
+		color: blue
+	}
+
+	.b:hover {
+		color: blue
+	}
+
+	header {
+		background-color: rgb(137, 240, 128);
+		text-align: center;
+		padding: 10px;
+		font-size: 25px;
+		color: black;
+	}
+</style>
+
+<body>
+	<header>
+		<strong>
+			<h1>LOGIN</h1><strong>
+				<hr>
+	</header>
+	<br><br>
+	<center>
+		<center
+			style="border:5px solid green;width:30%; background-color:lightgoldenrodyellow; padding:40px; font-size: 17px">
+
+			<table border="0">
+				<tr>
+					<td>
+						<style="color:black;" /> EMAIL: </td>
+					<td><input type="text" name="uname" placeholder="Email" class="a" id="email"></td>
+				</tr>
+				<tr>
+					<td>
+						<style="color:black;" />PASSWORD:</td>
+					<td><input type="password" name="pwd" placeholder="Password" class="b" id="pass"></td>
+				</tr>
+			</table>
+		</center>
+		<br><br>
+		<center>
+			<input type="submit" value="LOGIN" class="a" id="submit">
+			<br><br><br><br><br>
+			&copy;Verified by the Hospital Association
+		</center>
+		</strong>
+
+	</center>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="./doclogin.js"></script>
+</body>
+
 </html>
