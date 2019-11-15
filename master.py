@@ -10,6 +10,8 @@ CORS(application)
 cluster = MongoClient("mongodb+srv://Purkayastha:Qwerty12%@hospitaldata-7shyu.mongodb.net/test?retryWrites=true&w=majority")
 db = cluster["hospital"]
 
+currentLoginEmail = "none"
+
 @application.route("/")
 def hello():
     return "<h1 style='color:blue'>Hello There!</h1>"
@@ -103,9 +105,27 @@ def login():
             relPass = i["password"]
     # print(data)
     if password == relPass:
+        global currentLoginEmail
+        currentLoginEmail = email
+        # print(currentLoginEmail)
         return jsonify({"valid": "true"})
     else:
         return jsonify({"valid": "false"})
+
+
+@application.route('/loginData', methods=['POST'])
+def loginData():
+    global currentLoginEmail
+    collection = db["registerData"]
+    result = collection.find({ "email": currentLoginEmail })
+    data = []
+    for i in result:
+        data = {
+            "name": i["name"],
+            "diag": i["diag"],
+        }
+
+    return jsonify({"loginData": data})
 
 
 @application.route('/DocLogin', methods=['POST'])
