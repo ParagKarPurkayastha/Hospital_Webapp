@@ -13,13 +13,17 @@ db = cluster["hospital"]
 chatData = []
 
 
+@application.route('/getAllData', methods=['GET'])
+def getAllData():
+    return jsonify({"chatData": chatData})
+
 @application.route('/chatDataSend', methods=['POST'])
 def chatDataSend():
     collection = db["liveChat"]
     text = request.json["chatData"]
 
     data = {
-        "person": "user",
+        "person": "intern",
         "text": text
     }
 
