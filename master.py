@@ -11,6 +11,21 @@ cluster = MongoClient("mongodb+srv://Purkayastha:Qwerty12%@hospitaldata-7shyu.mo
 db = cluster["hospital"]
 
 currentLoginEmail = "none"
+chatData = []
+
+
+def chatSet():
+    collection = db["liveChat"]
+    collection.delete_many({})
+    data = {
+        "person": "intern",
+        "text": "How you doin?"
+    }
+    collection.insert_one(data)
+
+
+chatSet()
+
 
 @application.route("/")
 def hello():
@@ -144,6 +159,49 @@ def docLogin():
         return jsonify({"valid": "true"})
     else:
         return jsonify({"valid": "false"})
+
+
+@application.route('/chatDataSend', methods=['POST'])
+def chatDataSend():
+    collection = db["liveChat"]
+    text = request.json["chatData"]
+
+    data = {
+        "person": "user",
+        "text": text
+    }
+
+    print(text)
+    collection.insert_one(data)
+    return "ok"
+
+
+@application.route('/chatDataGet', methods=['GET'])
+def chatDataGet():
+    collection = db["liveChat"]
+    results = collection.find({})
+    global chatData
+
+    allChatData = []
+    for result in results :
+        chat = {
+            "person": result["person"],
+            "text": result["text"]
+        }
+        allChatData.append(chat)
+
+    print(chatData, allChatData)
+    data = []
+    for i in range(len(allChatData) - len(chatData)):
+        temp = {
+            "person": allChatData[len(chatData) + i]["person"],
+            "text": allChatData[len(chatData) + i]["text"]
+        }
+        data.append(temp)
+
+    chatData = allChatData
+    # print(data)
+    return jsonify({"chatData": data})
 
 
 if __name__ == '__main__':

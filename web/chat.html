@@ -60,11 +60,11 @@
   <h2>Chat Messages</h2>
   <div class="chatText">
 
-    <div class="container">
+    <!-- <div class="container">
       <img src="./static/chatBot.jpg" alt="Avatar" style="width:100%;">
       <p>Hello. How are you today?</p>
       <span class="time-right">11:00</span>
-    </div>
+    </div> -->
 
   </div>
 
@@ -79,18 +79,73 @@
 
   console.log("connected");
 
+  var appUrl = "http://127.0.0.1:5000/";
+
+
+  setInterval(function () {
+    // console.log("boom");
+
+    var dataSend = {
+      "async": true,
+      "crossDomain": true,
+      "url": appUrl + "chatDataGet",
+      "method": "GET",
+      "headers": {
+        "Content-Type": "application/json",
+        "cache-control": "no-cache"
+      },
+      "processData": false,
+      "data": "{}"
+    }
+    $.ajax(dataSend).done(function (response) {
+      // console.log(response);
+      for (i = 0; i < response.chatData.length; i++) {
+        if (response.chatData[i]["person"] == "user") {
+          $(".chatText").append(`
+              <div class="container darker">
+                  <img src="./static/user.png" alt="Avatar" class="right" style="width:100%;">
+                  <p>` + response.chatData[i]["text"] + `</p>
+                  <span class="time-left">11:01</span>
+              </div>
+          `);
+        }else {
+          $(".chatText").append(`
+              <div class="container darker">
+                  <img src="./static/chatBot.jpg" alt="Avatar" style="width:100%;">
+                  <p>` + response.chatData[i]["text"] + `</p>
+                  <span class="time-left">11:01</span>
+              </div>
+          `);
+        }
+      }
+
+    });
+  }, 3000);
+
+
   $("#submit").click(function () {
     console.log("clicked");
     text = $("#text").val();
     document.getElementById("text").value = "";
+
     if (text != "") {
-      $(".chatText").append(`
-                  <div class="container darker">
-                      <img src="./static/user.png" alt="Avatar" class="right" style="width:100%;">
-                      <p>` + text + `</p>
-                      <span class="time-left">11:01</span>
-                  </div>
-      `);
+
+      var dataSend = {
+        "async": true,
+        "crossDomain": true,
+        "url": appUrl + "chatDataSend",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "cache-control": "no-cache"
+        },
+        "processData": false,
+        "data": "{\n\t\"chatData\": \"" + text + "\"}"
+      }
+      $.ajax(dataSend).done(function (response) {
+        console.log(response);
+      });
+
     }
   });
 
