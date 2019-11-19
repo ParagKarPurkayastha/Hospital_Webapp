@@ -19,7 +19,7 @@ def chatSet():
     collection.delete_many({})
     data = {
         "person": "intern",
-        "text": "How you doin?"
+        "text": "Hello there, how may I help you ?"
     }
     collection.insert_one(data)
 
