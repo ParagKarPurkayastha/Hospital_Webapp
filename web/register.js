@@ -9,7 +9,8 @@ $(".submited").click(function(){
     var add = $("#add").val();
     var diag = $("#diag").children("option:selected").val();
     var pass = $("#pass").val();
-    console.log(diag);
+    var doctor = $("#diag").children("option:selected").attr("doctor");
+    console.log("doctor : ", doctor);
     var dataSend = {
         "async": true,
         "crossDomain": true,
@@ -20,7 +21,7 @@ $(".submited").click(function(){
             "cache-control": "no-cache"
         },
         "processData": false,
-        "data": "{\n\t\"name\": \"" + name + "\", \n\t\"email\": \"" + email + "\", \n\t\"cont\": \"" + cont + "\", \n\t\"add\": \"" + add + "\", \n\t\"diag\": \"" + diag + "\", \n\t\"pass\": \"" + pass + "\"}"
+        "data": "{\n\t\"name\": \"" + name + "\", \n\t\"email\": \"" + email + "\", \n\t\"cont\": \"" + cont + "\", \n\t\"add\": \"" + add + "\", \n\t\"diag\": \"" + diag + "\", \n\t\"pass\": \"" + pass + "\", \n\t\"doctor\": \"" + doctor + "\"}"
     }
     $.ajax(dataSend).done(function (response) {
         console.log("done")

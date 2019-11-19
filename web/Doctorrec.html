@@ -1,48 +1,95 @@
 <html>
-    <head>
-        <title>Doctor's Records</title>
-        <link rel="stylesheet" type="text/css" href="doc.css">
-    </head> 
-    <style>
-            th,td{ text-align: left;}
-            body{background-image: url("./med.jpeg");}
-            table,th,td{ border-collapse: collapse;}
-            th, td{background-color: rgba(255, 255, 255, 0.82);}
-            header{		
-                        text-align: center;
-                        padding: 28px;
-                        font-size: 30px;
-                        color: black;}
-            </style>
-          
-        <body>
-                    <h1 align="center">Dr. S. Srinivasan's page</h1>
-            <table align="center" border="1" width="100%">
-                <tr>
-                        <th>P.NO</th>
-                        <th>NAME</th>
-                        <th>AGE</th>
-                        <th>SEX</th>
-                        <th>DIAGNOSIS</th>
-                        <th>Treated by</th>
-                        <th>Medication provided</th>
-                        <th>Price</th>
-                        <th>ADDRESS</th>
-                        <th>PHONE</th>
-                </tr>
 
+<head>
+    <title>Doctor's Records</title>
+    <link rel="stylesheet" type="text/css" href="doc.css">
+</head>
+<style>
+    th,
+    td {
+        text-align: left;
+    }
+
+    body {
+        background-image: url("./med.jpeg");
+    }
+
+    table,
+    th,
+    td {
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        background-color: rgba(255, 255, 255, 0.82);
+    }
+
+    header {
+        text-align: center;
+        padding: 28px;
+        font-size: 30px;
+        color: black;
+    }
+</style>
+
+<body>
+    <h1 align="center" id="docName"></h1>
+    <table align="center" border="1" width="100%" id="docRecTable">
+        <tr>
+            <th>P.NO</th>
+            <th>NAME</th>
+            <th>DIAGNOSIS</th>
+            <th>Treated by</th>
+            <th>Medication provided</th>
+            <th>Price</th>
+            <th>ADDRESS</th>
+            <th>PHONE</th>
+        </tr>
+
+        <!-- data -->
+
+    </table>
+</body>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+
+    console.log("connected");
+
+    var appUrl = "http://127.0.0.1:5000/";
+
+    var dataGet = {
+        "async": true,
+        "crossDomain": true,
+        "url": appUrl + "doctorRec",
+        "method": "GET",
+        "headers": {
+            "Content-Type": "application/json",
+            "cache-control": "no-cache"
+        },
+        "processData": false,
+        "data": "{}"
+    }
+    $.ajax(dataGet).done(function (response) {
+        // console.log("done : ", response["doctorRec"], "len : ", response.doctorRec.length)
+        document.getElementById("docName").innerHTML = response["doctorRec"][0]["doctorName"];
+
+        for (i = 1; i < response["doctorRec"].length; i++) {
+            $("#docRecTable").append(`
                 <tr>
-                        <td>P001</td>
-				        <td>ABISHEK SHARMA</td>
-			        	<td>25</td>
-			        	<td>M</td>
-			        	<td>SWOLLEN EYE</td>
-			        	<td>Dr. S. Srinivasan</td>
-			        	<td>Tynsor900</td>
-			        	<td>250</td>
-			        	<td>BISHNUPUR</td>
-			        	<td>9876453783</td>
+                    <th>`+ i +`</th>
+                    <th>`+ response["doctorRec"][i]["name"] +`</th>
+                    <th>`+ response["doctorRec"][i]["diag"] +`</th>
+                    <th>`+ response["doctorRec"][i]["doctor"] +`</th>
+                    <th>Paracitemol</th>
+                    <th>250</th>
+                    <th>`+ response["doctorRec"][i]["add"] +`</th>
+                    <th>`+ response["doctorRec"][i]["cont"] +`</th>
                 </tr>
-            </table>
-        </body>
+            `);
+        }
+    });
+
+</script>
+
 </html>

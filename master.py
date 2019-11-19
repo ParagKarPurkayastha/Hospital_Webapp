@@ -11,6 +11,7 @@ cluster = MongoClient("mongodb+srv://Purkayastha:Qwerty12%@hospitaldata-7shyu.mo
 db = cluster["hospital"]
 
 currentLoginEmail = "none"
+currentDoctorLoginName = "none"
 chatData = []
 
 
@@ -91,6 +92,7 @@ def register():
     cont = request.json["cont"]
     add = request.json["add"]
     diag = request.json["diag"]
+    doctor = request.json["doctor"]
     password = request.json["pass"]
 
     data = {
@@ -99,7 +101,8 @@ def register():
         "cont": cont,
         "add": add,
         "diag": diag,
-        "password": password
+        "password": password,
+        "doctor": doctor
     }
 
     # print(data)
@@ -138,6 +141,7 @@ def loginData():
         data = {
             "name": i["name"],
             "diag": i["diag"],
+            "doctor": i["doctor"]
         }
 
     return jsonify({"loginData": data})
@@ -145,6 +149,7 @@ def loginData():
 
 @application.route('/DocLogin', methods=['POST'])
 def docLogin():
+    global currentDoctorLoginName
     email = request.json["email"]
     password = request.json["pass"]
     print(email, password)
@@ -152,13 +157,37 @@ def docLogin():
     result = collection.find({ "email": email })
     relPass = ""
     for i in result:
+        name = i["name"]
         relPass = i["password"];
 
     # print(data)
     if password == relPass:
+        currentDoctorLoginName = name
         return jsonify({"valid": "true"})
     else:
         return jsonify({"valid": "false"})
+
+
+@application.route('/doctorRec', methods=['GET'])
+def doctorRec():
+    global currentDoctorLoginName
+
+    collection = db["registerData"]
+    result = collection.find({ "doctor": currentDoctorLoginName })
+    data = [{"doctorName": currentDoctorLoginName}]
+    for i in result:
+        d = {
+            "name": i["name"],
+            "cont": i["cont"],
+            "diag": i["diag"],
+            "add": i["add"],
+            "doctor": i["doctor"]
+        }
+        data.append(d)
+
+    print(data)
+
+    return jsonify({"doctorRec": data})
 
 
 @application.route('/getAllData', methods=['GET'])

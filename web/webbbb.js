@@ -18,4 +18,5 @@ $.ajax(dataGet).done(function (response) {
     console.log("done : ", response["loginData"])
     document.getElementById("name").innerHTML = response["loginData"]["name"];
     document.getElementById("diag").innerHTML = response["loginData"]["diag"];
+    document.getElementById("doc").innerHTML = response["loginData"]["doctor"];
 });
