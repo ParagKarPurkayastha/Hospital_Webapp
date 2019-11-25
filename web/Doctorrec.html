@@ -45,7 +45,6 @@
             <th>Price</th>
             <th>ADDRESS</th>
             <th>PHONE</th>
-            <th>SUBMIT</th>
         </tr>
 
         <!-- data -->
@@ -82,11 +81,10 @@
                     <th>`+ response["doctorRec"][i]["name"] +`</th>
                     <th>`+ response["doctorRec"][i]["diag"] +`</th>
                     <th>`+ response["doctorRec"][i]["doctor"] +`</th>
-                    <th><input type="text" name="med" value="-"></th>
-                    <th><input type="text" name="cost" value="-"></th>
+                    <th>Painkiller</th>
+                    <th>Rs 300</th>
                     <th>`+ response["doctorRec"][i]["add"] +`</th>
                     <th>`+ response["doctorRec"][i]["cont"] +`</th>
-                    <th id="update">UPDATE</th>
                 </tr>
             `);
         }
